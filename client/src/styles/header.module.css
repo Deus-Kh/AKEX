@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Anurati-Regular';
+    src: url('../fonts/Anurati-Regular.otf') ;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+.logo{
+    font-family: "Anurati-Regular",sans-serif;
+    font-size: 2.5rem;
+}
