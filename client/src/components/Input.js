@@ -1,5 +1,5 @@
 import Input from '@mui/joy/Input';
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 
 function MyInput() {
 
