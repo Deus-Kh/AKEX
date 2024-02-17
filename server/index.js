@@ -1,12 +1,13 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
+const path = require('path')
 const USD = require('./rates/USD.json')
 const AMD = require('./rates/AMD.json')
 const PORT =   5005;
 
 const app = express();
-app.get('/',(req,res)=>{
+app.get('/',(req,res,)=>{
   res.send('hello')
 })
 
@@ -46,17 +47,12 @@ app.post('/send-email', (req, res) => {
       }
     });
   });
-app.get('/rates/AMD',(req,res)=>{
+app.get('/rates/:id',(req,res)=>{
   res.type('json')
   res.status(201)
-  res.send(AMD)
+  res.sendFile(path.resolve(__dirname+`/${req.url}.json`))
 })
-app.get('/rates/USD',(req,res)=>{
-  // res.type('json')
-  res.type('application/json')
-  res.status(201)
-  res.send('hell')
-})
+
 
 
 app.listen(PORT, ()=> console.log(`App has been started on ${PORT} port`))
