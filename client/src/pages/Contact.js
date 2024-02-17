@@ -6,7 +6,7 @@ import Button from '@mui/joy/Button';
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import '../App.css'
-
+const serverUrl = process.env.REACT_APP_SERVER;
 
 const inputStyles ={
   'color':'#fffff0',
@@ -56,7 +56,7 @@ const Contact = () => {
     console.log('Form data:', formData);
     
 
-    await fetch('http://localhost:5005/send-email', {
+    await fetch(serverUrl+'/send-email', {
       method: 'POST',
       headers: {
         Accept:"application/json",
