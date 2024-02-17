@@ -50,7 +50,7 @@ app.post('/send-email', (req, res) => {
 app.get('/rates/:id',(req,res)=>{
   res.type('json')
   res.status(201)
-  res.sendFile(path.resolve(__dirname+`/${req.url}.json`))
+  res.sendFile(path.resolve(__dirname+`${req.url}.json`))
 })
 
 
