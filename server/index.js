@@ -7,7 +7,7 @@ const PORT =   5005;
 
 const app = express();
 app.get('/',(req,res)=>{
-  res.send('hell')
+  res.send('hello')
 })
 
 app.use((req, res, next) => {
@@ -55,7 +55,7 @@ app.get('/rates/USD',(req,res)=>{
   // res.type('json')
   res.type('application/json')
   res.status(201)
-  res.send('hello')
+  res.send('hell')
 })
 
 
