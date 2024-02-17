@@ -1,4 +1,32 @@
+*::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #FFFFF0a1;
+}
 
+*::-webkit-scrollbar-track:hover {
+  background-color: #FFFFFFa1;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #FFFFFFa1;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #383838a8 ;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #3e3e3e;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #3e3e3e;
+}
 
 
 .App {
@@ -38,4 +66,47 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body{
+  /* background-color: #060d08; */
+  /* background-color: hsl( 190 40 4) */
+  scroll-behavior: smooth;
+  
+}
+
+a{
+  text-decoration: none;
+  color:#fffff0;
+  opacity: .7;
+  font-weight: 300;
+}
+.active{
+  opacity: 1;
+  font-weight: 500;
+  text-shadow: 0 0 3px #fffff06f;
+}
+a:hover{
+  transition: all .5s;  
+  opacity: 1;
+}
+
+.MuiOption-highlighted{
+  background: transparent !important;
+}
+
+@media all and ( max-width:660px) {
+  .formRoot{
+    transition: all .5s;
+    max-width: none !important;
+  }
+  .contactRoot{
+    transition: all .5s;
+    min-width: 80% !important;
+  }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

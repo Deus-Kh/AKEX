@@ -1,9 +1,9 @@
 const express = require('express');
-const config = require('config');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
-
-const PORT =  5005;
+const USD = require('./rates/USD.json')
+const AMD = require('./rates/AMD.json')
+const PORT =   5005;
 
 const app = express();
 app.use((req, res, next) => {
@@ -42,6 +42,11 @@ app.post('/send-email', (req, res) => {
       }
     });
   });
+app.get('/rates/:rate',(req,res)=>{
+  res.type('json')
+  res.status(201)
+  res.send(require(`.${req.url}.json`))
+})
 
 
 app.listen(PORT, ()=> console.log(`App has been started on ${PORT} port`))

@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Anurati-Regular';
-    src: url('../fonts/Anurati-Regular.otf') ;
+    src: url('../assets/Anurati-Regular.otf') ;
     font-weight: normal;
     font-style: normal;
   }
@@ -8,4 +8,15 @@
 .logo{
     font-family: "Anurati-Regular",sans-serif;
     font-size: 2.5rem;
+    color: #fffff0;
 }
+.active{
+  border-bottom: 1px solid black;
+  opacity: 1;
+  text-shadow: '0 0 5px 0px #fffff0'
+}
+
+.nav_button:hover{
+  background-color:transparent
+}
+

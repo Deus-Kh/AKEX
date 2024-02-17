@@ -7,16 +7,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from './pages/Layout';
 import React, { useState, useEffect } from 'react';
 import Preloader from './pages/Preloader';
-import './styles/main.module.css'
 
 
 function App() {
   const [loading, setLoading] = useState(true)
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false); 
-    }, 200); 
-  }, []);
+  
+  useEffect(()=>{
+    setLoading(false); 
+  },[])
   return (
     <>
     {loading?(<Preloader />): <BrowserRouter>
