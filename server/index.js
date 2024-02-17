@@ -46,10 +46,15 @@ app.post('/send-email', (req, res) => {
       }
     });
   });
-app.get('/rates/:rate',(req,res)=>{
+app.get('/rates/AMD',(req,res)=>{
   res.type('json')
   res.status(201)
-  res.send(require(`.${req.url}.json`))
+  res.send(AMD)
+})
+app.get('/rates/USD',(req,res)=>{
+  res.type('json')
+  res.status(201)
+  res.send(AMD)
 })
 
 
