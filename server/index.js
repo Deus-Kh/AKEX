@@ -54,7 +54,7 @@ app.get('/rates/AMD',(req,res)=>{
 app.get('/rates/USD',(req,res)=>{
   res.type('json')
   res.status(201)
-  res.send(AMD)
+  res.send('hello')
 })
 
 
