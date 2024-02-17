@@ -37,7 +37,12 @@ const url = process.env.REACT_APP_API_URL;
 function MyForm(props) {
     
     const request = (e,first,second,setValueFn)=>{
-        fetch(url+first).then(res => res.json()).then(text =>{ setValueFn((e* text.conversion_rates[second]).toFixed(3)  )})
+        fetch(url+first,{
+            method:"GET",
+            headers:{
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json()).then(text =>{ setValueFn((e* text.conversion_rates[second]).toFixed(3)  )})
     }
     const [firstValue, setfirstValue] = useState(1)
     const [secondValue, setsecondValue] = useState()

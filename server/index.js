@@ -53,7 +53,8 @@ app.get('/rates/AMD',(req,res)=>{
 })
 app.get('/rates/USD',(req,res)=>{
   // res.type('json')
-  res.status(200)
+  res.type('application/json')
+  res.status(201)
   res.send('hello')
 })
 
