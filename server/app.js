@@ -47,6 +47,9 @@ app.get('/rates/:rate',(req,res)=>{
   res.status(201)
   res.send(require(`.${req.url}.json`))
 })
+app.get('/',(req,res)=>{
+  res.redirect('https://akex.vercel.app/')
+})
 
 
 app.listen(PORT, ()=> console.log(`App has been started on ${PORT} port`))
