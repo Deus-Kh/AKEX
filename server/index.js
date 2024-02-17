@@ -6,9 +6,9 @@ const AMD = require('./rates/AMD.json')
 const PORT =   5005;
 
 const app = express();
-// app.get('/',(req,res)=>{
-//   res.redirect('https://akex.vercel.app/')
-// })
+app.get('/',(req,res)=>{
+  res.send('hello')
+})
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*'); // Разрешить запросы от всех источников
