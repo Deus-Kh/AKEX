@@ -8,7 +8,7 @@ const PORT =   5005;
 
 const app = express();
 app.get('/',(req,res,)=>{
-  res.send('hell')
+  res.send('helloo')
 })
 
 app.use((req, res, next) => {
