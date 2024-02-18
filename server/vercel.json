@@ -1,8 +1,7 @@
 {
     "version":2,
-    "builds":[{"src":"./index.js", "use":"@vercel/node"}],
+    "builds":[{"src":"*.js", "use":"@vercel/node"}],
     "routes":[
-        {"src":"/", "dest":"./index.js"},
-        {"src":"/rates/:id","dest":"./index.js"}
+        {"src":"/(*)", "dest":"/"}
     ]
 }
