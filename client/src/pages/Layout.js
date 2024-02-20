@@ -1,21 +1,21 @@
-import { Outlet} from "react-router-dom";
-import React, { useState } from 'react'
-import  NavBar from "../components/NavBar.js";
+import { Outlet } from "react-router-dom";
+import React from 'react'
+import NavBar from "../components/NavBar.js";
 import Background from "../components/Background.js";
 
 
 
 const Layout = () => {
-  
+
   return (
     <>
-    
-    <Background/>
-    <NavBar/>
-      
+
+      <Background />
+      <NavBar />
+
 
       <Outlet />
-      
+
     </>
   )
 };

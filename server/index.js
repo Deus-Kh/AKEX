@@ -2,13 +2,15 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const path = require('path')
-const USD = require('./rates/USD.json')
-const AMD = require('./rates/AMD.json')
+// const USD = require('./api/USD.json')
+// const AMD = require('./api/AMD.json')
+require('dotenv').config('./.env')
 const PORT =   5005;
+const API_LINK = process.env.API_LINK ||"https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/"
 
 const app = express();
 app.get('/',(req,res,)=>{
-  res.send('helloo')
+  res.redirect('http://localhost:3000')
 })
 
 app.use((req, res, next) => {
@@ -47,10 +49,17 @@ app.post('/send-email', (req, res) => {
       }
     });
   });
-app.get('/rates/:id',(req,res)=>{
+app.get('/api/',(req,res)=>{
   res.type('json')
   res.status(201)
-  res.sendFile(path.resolve(__dirname+`${req.url}.json`))
+  // res.sendFile(path.resolve(__dirname+`${req.url}.json`))
+  fetch(`${API_LINK}currencies/${req.query.id}.min.json`).then(res => res.json()).then(txet=>res.send(txet))
+})
+app.get('/api/currencies',async(req,res)=>{
+  res.type('json')
+  res.status(201)
+  // await fetch(`${API_LINK}currencies.json`).then(res => res.json()).then(txt=>res.send(txt))
+  res.send(require(`./api/currencies.json`));
 })
 
 

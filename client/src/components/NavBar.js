@@ -1,42 +1,8 @@
-
-// import React from 'react';
-// // import ReactDOM from 'react-dom';
-// import { NavLink } from "react-router-dom";
-// import styles from "../styles/header.module.css"
-
-//  function OldNavBar() {
-//   return ( <><nav>
-//     <h1 className={styles.logo}>AK</h1>
-//     <ul>
-//       <li>
-//         <NavLink to="/" activeClassName={styles.active}>Home</NavLink>
-//       </li>
-//       <li>
-//         <NavLink to="/about"  activeClassName={styles.active}>About us</NavLink>
-//       </li>
-//       <li>
-//       <NavLink to="/contact"  activeClassName={styles.active}>Contact</NavLink>
-//       </li>
-      
-//     </ul>
-//   </nav> </>);
-// }
-
-// export default OldNavBar;
-
-
 import * as React from 'react';
-// import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 import Box from '@mui/joy/Box';
-// import IconButton from '@mui/joy/IconButton';
-// import Chip from '@mui/joy/Chip';
 import List from '@mui/joy/List';
-// import ListDivider from '@mui/joy/ListDivider';
 import ListItem from '@mui/joy/ListItem';
-// import ListItemContent from '@mui/joy/ListItemContent';
 import ListItemButton from '@mui/joy/ListItemButton';
-import ListItemDecorator from '@mui/joy/ListItemDecorator';
-import HomeRounded from '@mui/icons-material/HomeRounded';
 import { NavLink } from "react-router-dom";
 import styles from "../styles/header.module.css"
 import Typography from '@mui/joy/Typography';

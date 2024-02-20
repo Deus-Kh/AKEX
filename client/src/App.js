@@ -10,11 +10,12 @@ import Preloader from './pages/Preloader';
 
 
 function App() {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(!window.onload)
   
   useEffect(()=>{
-    setLoading(false); 
+    setLoading(window.onload); 
   },[])
+  
   return (
     <>
     {loading?(<Preloader />): <BrowserRouter>
