@@ -12,7 +12,6 @@ const serverUrl = process.env.REACT_APP_SERVER;
 
 const Contact = () => {
 
-
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -39,9 +38,9 @@ const Contact = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        to: "deus.kh05@gmail.com",
-        subject: 'Message from ' + formData.username,
-        text: "from:" + formData.username + "\n" + formData.message
+        'to':'deus.kh05@gmail.com',
+        'subject': 'Message from ' + formData.username,
+        'text': "from:" + formData.username + "\n" + formData.message
       })
     })
       .then(response => {
@@ -100,7 +99,7 @@ const Contact = () => {
           name="message"
           value={formData.message}
           onChange={handleInputChange}
-          sx={Object.assign(Styles.inputStyles, { 'minRows': '5' })}
+          sx={{...Styles.inputStyles,  'minRows': '5'} }
         />
 
         <Button type="submit" sx={Styles.button}>Submit</Button>

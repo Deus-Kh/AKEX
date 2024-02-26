@@ -1,67 +1,29 @@
 const express = require('express');
-const nodemailer = require('nodemailer');
+const sendEmailRoute = require('./routes/sendEmail')
+const apiRoute = require('./routes/api')
 const bodyParser = require('body-parser');
-const path = require('path')
-// const USD = require('./api/USD.json')
-// const AMD = require('./api/AMD.json')
-require('dotenv').config('./.env')
-const PORT =   5005;
-const API_LINK = process.env.API_LINK ||"https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/"
+require('dotenv').config()
+
+const PORT = process.env.HOST_PORT || 5005;
 
 const app = express();
-app.get('/',(req,res,)=>{
+
+app.get('/', (req, res,) => {
   res.redirect('http://localhost:3000')
 })
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*'); // Разрешить запросы от всех источников
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Разрешенные HTTP-методы
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept'); // Разрешенные заголовки
-    next();
+  res.header('Access-Control-Allow-Origin', '*'); // Թույլատրում է հարցումները
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Թույլատրված HTTP-մեթոդները
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization'); // Թույլատրված header-ները
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
 });
+
 app.use(bodyParser.json());
 
-app.post('/send-email', (req, res) => {
-    const { to, subject, text } = req.body;
-  
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'deus.kh05@gmail.com',
-        pass: 'emat zxwi qdri nzks'
-      }
-    });
-  
-    const mailOptions = {
-      from: 'Exchange App',
-      to,
-      subject,
-      text
-    };
-  
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error('Error sending email:', error);
-        res.status(500).send('Error sending email');
-      } else {
-        console.log('Email sent:', info.response);
-        res.status(200).send('Email sent successfully');
-      }
-    });
-  });
-app.get('/api/',(req,res)=>{
-  res.type('json')
-  res.status(201)
-  // res.sendFile(path.resolve(__dirname+`${req.url}.json`))
-  fetch(`${API_LINK}currencies/${req.query.id}.min.json`).then(res => res.json()).then(txet=>res.send(txet))
-})
-app.get('/api/currencies',async(req,res)=>{
-  res.type('json')
-  res.status(201)
-  // await fetch(`${API_LINK}currencies.json`).then(res => res.json()).then(txt=>res.send(txt))
-  res.send(require(`./api/currencies.json`));
-})
+app.use('/send-email', sendEmailRoute)
 
+app.use('/api', apiRoute)
 
-
-app.listen(PORT, ()=> console.log(`App has been started on ${PORT} port`))
+app.listen(PORT, () => console.log(`App has been started on ${PORT} port`))

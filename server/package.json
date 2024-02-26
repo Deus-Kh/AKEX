@@ -1,6 +1,6 @@
 {
   "name": "mern-exchange",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "exchange app on mern stack",
   "main": "index.js",
   "scripts": {

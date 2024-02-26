@@ -9,10 +9,15 @@ import Typography from '@mui/joy/Typography';
 
 
 export default function Navbar() {
-
   return (
-    
-    <Box role="navigation" sx={{"width":"37%","display":'flex',"justify-content": "space-between", "position":'fixed','margin':'0 2em'}}>
+    <Box role="navigation" 
+    sx={{
+      "width":"37%",
+      "display":'flex',
+      "justify-content": "space-between", 
+      "position":'fixed',
+      'margin':'0 2em'
+      }}>
       <Box>
       <Typography noWrap
       level="h1"
@@ -63,12 +68,7 @@ export default function Navbar() {
           backgroundColor: 'transparent !important'
         },
       }}>
-            
-            <NavLink 
-              to="/contact" 
-              
-              >
-              Contact</NavLink>
+            <NavLink to="/contact" >Contact</NavLink>
           </ListItemButton>
         </ListItem>
       </List>

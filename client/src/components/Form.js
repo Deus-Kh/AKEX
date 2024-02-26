@@ -15,13 +15,17 @@ const url = process.env.REACT_APP_API_URL;
 
 function MyForm(props) {
 
-    const request = (e, first, second, setValueFn) => {
+    const request = (e, first, second, setValueFn, rateChanged=false) => {
         fetch(url + '?id=' + first, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
             }
-        }).then(res => res.json()).then(text => { setValueFn((e * text[first][second]).toFixed(3)) })
+        }).then(res => res.json())
+        .then(text => { 
+            setValueFn((e * text[first][second]).toFixed(3));
+             if(rateChanged)setDb(text[firstRateValue]);
+            })
     }
     const [firstValue, setfirstValue] = useState(1)
     const [secondValue, setsecondValue] = useState()
@@ -29,15 +33,13 @@ function MyForm(props) {
     const [secondRateValue, setsecondRateValue] = useState("usd")
     const [db, setDb] = useState()
     useEffect(() => {
-
-        request(firstValue, firstRateValue, secondRateValue, setsecondValue)
-        fetch(url + '?id=' + firstRateValue).then(res => res.json()).then(text => { setDb(text[firstRateValue]) })
-    }, [firstValue, firstRateValue, secondRateValue])
+        request(firstValue, firstRateValue, secondRateValue, setsecondValue,true)
+    }, [firstRateValue, secondRateValue])
 
 
 
     const firstInputHandler = (e, firstRat, secondRat) => {
-
+        setfirstValue(e)
         request(e, firstRat, secondRat, setsecondValue)
 
     }
@@ -63,7 +65,9 @@ function MyForm(props) {
                 </Typography>
 
                 <Input type='number'
-                    onChange={e => { setfirstValue(e.target.value); firstInputHandler(e.target.value, firstRateValue, secondRateValue) }} value={firstValue}
+                    onChange={e => {  
+                        firstInputHandler(e.target.value, firstRateValue, secondRateValue) 
+                    }} value={firstValue}
                     placeholder='From'
                     sx={Styles.inputStyles}
                     endDecorator={
@@ -76,7 +80,9 @@ function MyForm(props) {
 
                 <Input type='number'
                     placeholder='To'
-                    onChange={e => { secondInputHandler(e.target.value, secondRateValue, firstRateValue) }} value={secondValue}
+                    onChange={e => { 
+                        secondInputHandler(e.target.value, secondRateValue, firstRateValue) 
+                    }} value={secondValue}
                     sx={Styles.inputStyles}
                     endDecorator={
                         <React.Fragment>
