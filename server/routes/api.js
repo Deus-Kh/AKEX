@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const API_LINK = process.env.API_LINK || "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/"
+
+// const dotenv = require("dotenv")
+// dotenv.config()
+const API_LINK = process.env.API_LINK || "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/"
 
 router.get('/', (req, res) => {
   res.type('json')
@@ -15,4 +18,4 @@ router.get('/currencies', (req, res) => {
   res.send(require(`../api/currencies.json`));
 })
 
-module.exports = router;
+module.exports = router; 
