@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import MySelect from './Select';
-import Input from '@mui/joy/Input';
-import Typography from '@mui/joy/Typography';
+import React, { useState, useEffect, lazy} from 'react';
+// import MySelect from './Select';
+
+import {Input, Typography, Box, Snackbar} from '@mui/joy/';
+import Switch,  { switchClasses } from '@mui/joy/Switch';
 import { FormControl } from "@mui/material";
-import Box from '@mui/joy/Box';
-import '../App.css'
-import Snackbar from "@mui/joy/Snackbar";
-import Styles from '../styles/Form.module'
-
-
-
-
+import '../App.css';
+import Styles from '../styles/Form.module';
+const MySelect = lazy(() => import('./Select'));
 const url = process.env.REACT_APP_API_URL;
 
 function MyForm(props) {
@@ -32,6 +28,11 @@ function MyForm(props) {
     const [firstRateValue, setfirstRateValue] = useState("amd")
     const [secondRateValue, setsecondRateValue] = useState("usd")
     const [db, setDb] = useState()
+    const [crypto, setCrypto] = useState(false);
+
+    useEffect(()=>{
+        console.log(crypto)
+    },[crypto])
     useEffect(() => {
         request(firstValue, firstRateValue, secondRateValue, setsecondValue,true)
     }, [firstRateValue, secondRateValue])
@@ -50,7 +51,7 @@ function MyForm(props) {
 
     return (
 
-        <Box
+            <Box
             sx={Styles.box}
             className={"formRoot"}>
             <FormControl sx={Styles.formControl}>
@@ -72,7 +73,7 @@ function MyForm(props) {
                     sx={Styles.inputStyles}
                     endDecorator={
                         <React.Fragment>
-                            <MySelect id="firstRate" value="amd" onChange={setfirstRateValue} />
+                            <MySelect id="firstRate" value="amd" onChange={setfirstRateValue} crypto={crypto}/>
                         </React.Fragment>
                     }
                 />
@@ -86,7 +87,7 @@ function MyForm(props) {
                     sx={Styles.inputStyles}
                     endDecorator={
                         <React.Fragment>
-                            <MySelect id="secondRate" value="usd" onChange={setsecondRateValue} />
+                            <MySelect id="secondRate" value="usd" onChange={setsecondRateValue} crypto={crypto}/>
                         </React.Fragment>
                     }
                 />
@@ -100,6 +101,43 @@ function MyForm(props) {
                     1{db ? " " + secondRateValue.toUpperCase() + " = " + (1 / db[secondRateValue]).toFixed(5) + " " + firstRateValue.toUpperCase() : " "}
 
                 </Typography>
+                
+                <Switch
+                endDecorator={<Typography 
+                    sx={{...Styles.typography,padding:0}}
+                    component="label"
+                    
+                    >
+                    CryptoCurrencies
+                    </Typography>}
+                    checked={crypto}
+                     onChange={(event) => setCrypto(event.target.checked)}
+                     sx={() => ({
+                        'alignSelf':'baseline',
+                        'marginLeft':'.5rem',
+                        '--Switch-thumbShadow': '0 3px 7px 0 rgba(0 0 0 / 0.12)',
+                        // '--Switch-thumbSize': '27px',
+                        // '--Switch-trackWidth': '51px',
+                        // '--Switch-trackHeight': '31px',
+                        '--Switch-trackBackground': "rgba(255, 255, 240, 0.05)",
+                        [`& .${switchClasses.thumb}`]: {
+                          transition: 'width 0.1s, left 0.1s',
+                        },
+                        '&:hover': {
+                          '--Switch-trackBackground': "rgba(255, 255, 240, 0.07)",
+                        },
+                        '&:active': {
+                          '--Switch-thumbWidth': '90%',
+                        },
+                        [`&.${switchClasses.checked}`]: {
+                          '--Switch-trackBackground': '#fffff080',
+                          '&:hover': {
+                            '--Switch-trackBackground': '#fffff080',
+                          },
+                        },
+                      })
+                    }
+                     />
             </FormControl>
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}

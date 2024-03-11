@@ -1,11 +1,7 @@
 import * as React from 'react';
-import Box from '@mui/joy/Box';
-import List from '@mui/joy/List';
-import ListItem from '@mui/joy/ListItem';
-import ListItemButton from '@mui/joy/ListItemButton';
 import { NavLink } from "react-router-dom";
-import styles from "../styles/header.module.css"
-import Typography from '@mui/joy/Typography';
+import "../styles/header.module.css"
+import {Typography, ListItemButton, ListItem, List, Box} from '@mui/joy/';
 
 
 export default function Navbar() {

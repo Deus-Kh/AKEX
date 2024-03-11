@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Select from '@mui/joy/Select';
-import Option from '@mui/joy/Option';
+import {Select, Option} from '@mui/joy/';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import Styles from '../styles/Select.module'
 const url = process.env.REACT_APP_API_URL;
@@ -9,10 +8,10 @@ const url = process.env.REACT_APP_API_URL;
 function MySelect(props) {
     const [list, setList] = useState([])
     const [Value, setValue] = useState(props.value)
-
-
+    
     useEffect(() => {
-        fetch(url + "currencies")
+        
+        fetch(url + `${props.crypto?"currencies.max":"currencies"}`)
             .then(res => res.json())
             .then(text => {
                 setList(text)
@@ -21,7 +20,7 @@ function MySelect(props) {
                 // setList(result)
             })
 
-    }, [props.value])
+    }, [props.value,props.crypto])
 
     function changeHandler(e) {
         setValue(e.target.textContent.toLowerCase())

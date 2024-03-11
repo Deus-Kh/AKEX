@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { FormControl } from "@mui/material";
-import Input from '@mui/joy/Input';
-import Textarea from '@mui/joy/Textarea';
-import Button from '@mui/joy/Button';
-import Box from '@mui/joy/Box';
-import Typography from '@mui/joy/Typography';
+import {Box,Button,Textarea, Input, Typography} from '@mui/joy'
 import '../App.css'
 import Styles from '../styles/Contact.module'
 

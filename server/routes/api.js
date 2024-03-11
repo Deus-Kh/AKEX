@@ -17,5 +17,10 @@ router.get('/currencies', (req, res) => {
   res.status(201)
   res.send(require(`../api/currencies.json`));
 })
+router.get('/currencies.max', (req, res) => {
+  res.type('json')
+  res.status(201)
+  res.send(require(`../api/currencies.max.json`));
+})
 
 module.exports = router; 
