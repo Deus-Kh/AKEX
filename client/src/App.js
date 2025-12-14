@@ -1,4 +1,4 @@
-// import logo from './logo.svg';
+
 import './App.css';
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -10,11 +10,7 @@ import Preloader from './pages/Preloader';
 
 
 function App() {
-  // const [loading, setLoading] = useState(!window.onload)
-  
-  // useEffect(()=>{
-  //   setLoading(window.onload); 
-  // },[])
+ 
   
   return (
     <>
